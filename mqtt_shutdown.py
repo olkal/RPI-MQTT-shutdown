@@ -5,6 +5,7 @@ import time
 from subprocess import call
 
 # Use MQTT for remote reboot and shutdown
+# copy this file to /usr/local/bin (if other path is used, then also change the service script file)
 
 # "on connect" event
 def connectFunction (client, userdata, flags, rc):
