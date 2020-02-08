@@ -11,7 +11,7 @@ from subprocess import call
 def connectFunction (client, userdata, flags, rc):
   if rc==0:
     print("connected OK Returned code=",rc)
-    MyClient.publish("RPI_test/stat", "online") # Publish message to MQTT broker
+    MyClient.publish("stat/RPI_test", "online") # Publish message to MQTT broker
   else:
     print("Bad connection Returned code=",rc)
 
@@ -35,7 +35,7 @@ def handleCmnd (cmnd):
 MyClient = mqtt.Client() # Create a MQTT client object
 #MyClient.username_pw_set("my_mqtt_user", "my_mqtt_password")
 MyClient.on_connect = connectFunction # run function on connect with broker
-MyClient.will_set("RPI_test/stat", "Offline", 0, True)
+MyClient.will_set("stat/RPI_test", "Offline", 0, True)
 MyClient.connect("192.168.1.4", 1883) # Connect to the test MQTT broker
 MyClient.subscribe("cmnd/RPI_test") # Subscribe to a topic
 MyClient.on_message = messageFunction # Attach the messageFunction to subscription
@@ -43,5 +43,5 @@ MyClient.loop_start() # Start the MQTT client
 
 
 while(1):
-  MyClient.publish("RPI_test/stat", "online") # Publish message to MQTT broker
+  MyClient.publish("stat/RPI_test", "online") # Publish message to MQTT broker
   time.sleep(60) # Sleep for a while
