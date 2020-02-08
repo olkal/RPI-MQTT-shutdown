@@ -1,0 +1,18 @@
+[Service]
+ExecStart=/usr/bin/python /usr/local/bin/mqtt_shutdown.py
+WorkingDirectory=/usr/local/bin/
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=mqtt_shutdown
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+
+
+#Copy this file into /etc/systemd/system as root
+#To enable service: sudo systemctl enable mqtt_shutdown.service
+#To run service (will be automatically started on next reboot): sudo systemctl start mqtt_shutdown.service
