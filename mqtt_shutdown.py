@@ -32,7 +32,7 @@ def handleCmnd (cmnd):
     print("'test' received")
 
 MyClient = mqtt.Client() # Create a MQTT client object
-MyClient.username_pw_set("MQTT_55", "MQTT_55_pass")
+#MyClient.username_pw_set("my_mqtt_user", "my_mqtt_password")
 MyClient.on_connect = connectFunction # run function on connect with broker
 MyClient.will_set("RPI_test/stat", "Offline", 0, True)
 MyClient.connect("192.168.1.4", 1883) # Connect to the test MQTT broker
