@@ -1,6 +1,6 @@
 [Service]
-ExecStart=/usr/bin/python /usr/local/bin/mqtt_shutdown.py
-WorkingDirectory=/usr/local/bin/
+ExecStart=/usr/bin/python /usr/local/bin/RPI-MQTT-shutdown/mqtt_shutdown.py
+WorkingDirectory=/usr/local/bin/RPI-MQTT-shutdown/
 Restart=always
 RestartSec=10
 StandardOutput=syslog
