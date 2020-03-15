@@ -12,7 +12,7 @@ Get the files:
 
 `sudo git clone https://github.com/olkal/RPI-MQTT-shutdown.git`
 
-Edit MQTT url, port, user, passwrd and topics:
+Edit the MQTT broker url, port, user, passwrd and topics:
 
 `sudo nano /usr/local/bin/RPI-MQTT-shutdown/mqtt_shutdown.py`
 
