@@ -6,7 +6,7 @@ Installation:
 
 `sudo apt-get install python-pip`
 
-Install Paho
+`Install Paho`
 
 Get the files:
 
