@@ -2,7 +2,7 @@
 This script will reboot or shutdown the host on demand via MQTT message. 
 It will also send the host connection status ("Online" or "Offline") to the broker.
 
-Installation:
+Install Paho if not already installed:
 
 `sudo apt-get install python-pip`
 
