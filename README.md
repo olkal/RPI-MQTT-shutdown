@@ -21,6 +21,7 @@ Edit MQTT url, port, user, passwrd and topics:
 Run/test the script: 
 
 `cd /usr/local/bin/RPI-MQTT-shutdown`
+
 `sudo python /usr/local/bin/RPI-MQTT-shutdown/mqtt_shutdown.py`
 
 ******************************
