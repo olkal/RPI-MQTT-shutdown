@@ -20,18 +20,17 @@ Edit MQTT url, port, user, passwrd and topics:
 
 Run/test the script: 
 
-`cd /usr/local/bin/RPI-MQTT-shutdown
-
-sudo python /usr/local/bin/RPI-MQTT-shutdown/mqtt_shutdown.py`
+`cd /usr/local/bin/RPI-MQTT-shutdown`
+`sudo python /usr/local/bin/RPI-MQTT-shutdown/mqtt_shutdown.py`
 
 ******************************
 Autostart the script:
 
-`cd /usr/local/bin/RPI-MQTT-shutdown
+`cd /usr/local/bin/RPI-MQTT-shutdown`
 
-sudo mv mqtt_shutdown.service /etc/systemd/system/
+`sudo mv mqtt_shutdown.service /etc/systemd/system/`
 
-sudo systemctl enable mqtt_shutdown.service`
+`sudo systemctl enable mqtt_shutdown.service`
 
 Run service (will be automatically started on next reboot):
 
