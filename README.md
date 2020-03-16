@@ -32,3 +32,4 @@ Autostart the script:
 Run service (will be automatically started on next reboot):
 
 `sudo systemctl start mqtt_shutdown.service`
+
