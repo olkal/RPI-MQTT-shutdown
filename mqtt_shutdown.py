@@ -16,6 +16,7 @@ def connectFunction (client, userdata, flags, rc):
   if rc==0:
     print("connected OK Returned code=",rc)
     MyClient.publish(teleTopic, "Online") # Publish message to MQTT broker
+    MyClient.subscribe(cmndTopic) # Subscribe after re-connect
   else:
     print("Bad connection Returned code=",rc)
 
@@ -34,18 +35,14 @@ def handleCmnd (cmnd):
   elif cmnd=="shutdown":
     call(['shutdown', '-h', 'now'], shell=False) #shut down host
   elif cmnd=="test":
-    print("'test' received")
+    MyClient.publish(teleTopic, "Reply to test msg") # Publish reply to an incomming msg with payload "test"
 
-MyClient = mqtt.Client() # Create a MQTT client object
-MyClient.username_pw_set(brokerUserName, brokerPassword)
-MyClient.on_connect = connectFunction # run function on connect with broker
-MyClient.will_set(teleTopic, "Offline", 0, True)
-MyClient.connect(brokerAdr, brokerPort) # Connect to the test MQTT broker
-MyClient.subscribe(cmndTopic) # Subscribe to a topic
-MyClient.on_message = messageFunction # Attach the messageFunction to subscription
-MyClient.loop_start() # Start the MQTT client
+while (1):
+  MyClient = mqtt.Client() # Create a MQTT client object
+  MyClient.username_pw_set(brokerUserName, brokerPassword)
+  MyClient.on_connect = connectFunction # run function on connect with broker
+  MyClient.will_set(teleTopic, "Offline", 0, True)
+  MyClient.connect(brokerAdr, brokerPort) # Connect to the test MQTT broker
+  MyClient.on_message = messageFunction # Attach the messageFunction to subscription
+  MyClient.loop_forever()    
 
-
-while(1):
-  MyClient.publish(teleTopic, "Online") # Publish message to MQTT broker
-  time.sleep(60) # Sleep for a while
