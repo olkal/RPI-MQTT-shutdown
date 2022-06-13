@@ -15,7 +15,7 @@ cmndTopic = "cmnd/myRpi"
 def connectFunction (client, userdata, flags, rc):
   if rc==0:
     print("connected OK Returned code=",rc)
-    MyClient.publish(teleTopic, "Online") # Publish message to MQTT broker
+    MyClient.publish(teleTopic, "Online", 1, True) # Publish message to MQTT broker
     MyClient.subscribe(cmndTopic) # Subscribe after re-connect
   else:
     print("Bad connection Returned code=",rc)
@@ -41,7 +41,7 @@ while (1):
   MyClient = mqtt.Client() # Create a MQTT client object
   MyClient.username_pw_set(brokerUserName, brokerPassword)
   MyClient.on_connect = connectFunction # run function on connect with broker
-  MyClient.will_set(teleTopic, "Offline", 0, True)
+  MyClient.will_set(teleTopic, "Offline", 1, True)
   MyClient.connect(brokerAdr, brokerPort) # Connect to the test MQTT broker
   MyClient.on_message = messageFunction # Attach the messageFunction to subscription
   MyClient.loop_forever()    
